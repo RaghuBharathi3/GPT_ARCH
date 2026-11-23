@@ -1,0 +1,181 @@
+import React, { useState } from 'react';
+import { 
+  FileText, 
+  Database, 
+  Cpu, 
+  ChevronRight, 
+  CheckCircle2, 
+  Sparkles, 
+  Layers, 
+  Zap,
+  Info
+} from 'lucide-react';
+import { THREE_PILLARS } from '../data/presentationData';
+import { sfx } from '../utils/audio';
+import { BlockMath } from './MathView';
+
+export const ThreePillars: React.FC = () => {
+  const [activePillarId, setActivePillarId] = useState<string>('transformer');
+
+  const handleSelectPillar = (id: string) => {
+    sfx.playClick(900);
+    setActivePillarId(id);
+  };
+
+  const getPillarIcon = (id: string) => {
+    switch (id) {
+      case 'generative':
+        return (
+          <svg className="w-12 h-12 stroke-cyan-400 fill-none" viewBox="0 0 24 24" strokeWidth="1.5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="m14 14 3 6 2-3 3-1-8-2z" className="fill-cyan-400 stroke-cyan-400" />
+          </svg>
+        );
+      case 'pre-trained':
+        return (
+          <svg className="w-12 h-12 stroke-cyan-400 fill-none" viewBox="0 0 24 24" strokeWidth="1.5">
+            <ellipse cx="12" cy="5" rx="8" ry="3" />
+            <path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5" />
+            <path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3" />
+            <line x1="8" y1="5" x2="8" y2="19" strokeDasharray="2 2" />
+            <line x1="16" y1="5" x2="16" y2="19" strokeDasharray="2 2" />
+          </svg>
+        );
+      case 'transformer':
+        return (
+          <svg className="w-12 h-12 stroke-cyan-400 fill-none" viewBox="0 0 24 24" strokeWidth="1.5">
+            <circle cx="12" cy="12" r="4" fill="rgba(6, 182, 212, 0.2)" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v6m0 8v6M2 12h6m8 0h6m-3-7-4 3m-6 4-4 3m0-10 4 3m6 4 4 3" />
+            <circle cx="12" cy="2" r="1.5" fill="#00f0ff" />
+            <circle cx="22" cy="12" r="1.5" fill="#00f0ff" />
+            <circle cx="12" cy="22" r="1.5" fill="#00f0ff" />
+            <circle cx="2" cy="12" r="1.5" fill="#00f0ff" />
+          </svg>
+        );
+      default:
+        return <Cpu className="w-12 h-12 text-cyan-400" />;
+    }
+  };
+
+  return (
+    <section id="pillars" className="py-20 border-b border-cyan-500/20 light:border-slate-300 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-xs font-mono uppercase tracking-widest text-cyan-400 light:text-cyan-700">
+            [SLIDE 03 // THE THREE FOUNDATIONAL PILLARS]
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-slate-100 light:text-slate-900 mt-1">
+            DECODING THE ARCHITECTURE
+          </h2>
+          <p className="mt-3 text-sm sm:text-base text-slate-300 light:text-slate-600">
+            The acronym "GPT" represents three foundational machine learning paradigms unified into a single coherent system.
+          </p>
+        </div>
+
+        {/* 3 Pillars Blueprint Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {THREE_PILLARS.map((pillar, index) => {
+            const isSelected = pillar.id === activePillarId;
+            return (
+              <div
+                key={pillar.id}
+                onClick={() => handleSelectPillar(pillar.id)}
+                className={`cursor-pointer rounded-xl p-6 sm:p-8 transition-all border-2 relative flex flex-col justify-between blueprint-corner ${
+                  isSelected
+                    ? 'border-cyan-400 bg-slate-900/90 light:bg-cyan-50/90 shadow-[0_0_25px_rgba(0,240,255,0.25)] scale-[1.02]'
+                    : 'border-cyan-500/20 bg-slate-950/60 light:bg-white light:border-slate-300 hover:border-cyan-500/50 hover:bg-slate-900/50'
+                }`}
+              >
+                {/* Column Drafting Header */}
+                <div className="flex items-center justify-between border-b border-cyan-500/20 pb-3 mb-6 text-[10px] font-mono text-cyan-400 light:text-cyan-700">
+                  <span>PILLAR 0{index + 1}</span>
+                  <span>[SPEC // {pillar.id.toUpperCase()}]</span>
+                </div>
+
+                {/* Visual Diagram matching Slide 3 */}
+                <div className="flex justify-center mb-6 py-4 rounded-lg bg-slate-950/40 light:bg-slate-100 border border-cyan-500/10">
+                  {getPillarIcon(pillar.id)}
+                </div>
+
+                {/* Pillar Title & Concept */}
+                <div className="space-y-3">
+                  <h3 className="font-display font-black text-xl text-slate-100 light:text-slate-900 tracking-wide text-center">
+                    {pillar.title}
+                  </h3>
+                  <div className="text-xs font-mono text-cyan-300 light:text-cyan-800 font-semibold text-center">
+                    {pillar.subtitle}
+                  </div>
+                  <p className="text-sm text-slate-300 light:text-slate-700 text-center leading-relaxed">
+                    {pillar.concept}
+                  </p>
+                </div>
+
+                {/* Click indicator */}
+                <div className="mt-6 pt-4 border-t border-cyan-500/20 flex items-center justify-between text-xs font-mono">
+                  <span className={isSelected ? 'text-cyan-400 font-bold' : 'text-slate-500'}>
+                    {isSelected ? '● ACTIVE INSPECTION' : 'Click to inspect'}
+                  </span>
+                  <ChevronRight className={`w-4 h-4 transition-transform ${isSelected ? 'rotate-90 text-cyan-400' : 'text-slate-500'}`} />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Detailed Interactive Inspector Drawer */}
+        {activePillarId && (
+          <div className="mt-8 p-6 sm:p-8 rounded-xl border border-cyan-500/40 bg-slate-900/80 light:bg-slate-50 light:border-slate-300 shadow-xl backdrop-blur-md">
+            {(() => {
+              const currentPillar = THREE_PILLARS.find(p => p.id === activePillarId)!;
+              return (
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  <div className="lg:col-span-7 space-y-4">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-cyan-950/70 border border-cyan-800 text-cyan-400 text-xs font-mono">
+                      <Info className="w-3.5 h-3.5" />
+                      <span>DEEP DIVE: {currentPillar.title} ENGINE</span>
+                    </div>
+                    <h4 className="text-xl font-display font-bold text-slate-100 light:text-slate-900">
+                      Why {currentPillar.title} Revolutionized Machine Learning
+                    </h4>
+                    <p className="text-sm text-slate-300 light:text-slate-700 leading-relaxed">
+                      {currentPillar.deepDive}
+                    </p>
+
+                    <div className="space-y-2 pt-2">
+                      <span className="text-xs font-mono text-cyan-400 light:text-cyan-700 uppercase tracking-wider block">
+                        Architectural Verification Points:
+                      </span>
+                      {currentPillar.technicalMetrics.map((metric, i) => (
+                        <div key={i} className="flex items-center gap-2.5 text-xs text-slate-300 light:text-slate-700">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                          <span>{metric}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Math Formula Card */}
+                  <div className="lg:col-span-5 p-6 rounded-lg border border-cyan-500/30 bg-slate-950 light:bg-slate-900 text-slate-100 font-mono shadow-inner">
+                    <div className="text-[10px] text-cyan-400 uppercase tracking-widest mb-3 flex items-center justify-between">
+                      <span>Mathematical Formulation</span>
+                      <span>LaTeX Notation</span>
+                    </div>
+                    <div className="p-4 rounded bg-slate-900 light:bg-slate-950 border border-cyan-500/20 text-cyan-300 text-center text-sm sm:text-base my-2 overflow-x-auto py-5">
+                      <BlockMath math={currentPillar.formula} />
+                    </div>
+                    <div className="text-[11px] text-slate-400 mt-3 leading-relaxed">
+                      {currentPillar.id === 'generative' && "Joint probability modeled as product of conditional probabilities over historical tokens."}
+                      {currentPillar.id === 'pre-trained' && "Log-likelihood maximization over vast unlabeled natural language corpora."}
+                      {currentPillar.id === 'transformer' && "Scaled dot-product attention mapping Queries (Q), Keys (K), and Values (V) with square-root dimension scaling."}
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
+          </div>
+        )}
+      </div>
+    </section>
+  );
+};

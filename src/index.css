@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-blueprint: #060c18;
+    --grid-line-major: rgba(14, 165, 233, 0.12);
+    --grid-line-minor: rgba(14, 165, 233, 0.04);
+    --blueprint-line: #0284c7;
+    --blueprint-accent: #00f0ff;
+  }
+
+  .light {
+    --bg-blueprint: #f0f7ff;
+    --grid-line-major: rgba(2, 132, 199, 0.16);
+    --grid-line-minor: rgba(2, 132, 199, 0.06);
+    --blueprint-line: #0284c7;
+    --blueprint-accent: #0369a1;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Space Grotesk', -apple-system, sans-serif;
+  }
+}
+
+/* Blueprint Graph Paper Backgrounds */
+.blueprint-grid-dark {
+  background-color: #070e1c;
+  background-image: 
+    linear-gradient(to right, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+    linear-gradient(to right, rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+}
+
+.blueprint-grid-light {
+  background-color: #f1f7fe;
+  background-image: 
+    linear-gradient(to right, rgba(2, 132, 199, 0.14) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(2, 132, 199, 0.14) 1px, transparent 1px),
+    linear-gradient(to right, rgba(2, 132, 199, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(2, 132, 199, 0.05) 1px, transparent 1px);
+  background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+}
+
+/* Technical Blueprint Schematic Border Accents */
+.blueprint-panel {
+  position: relative;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: rgba(11, 23, 44, 0.7);
+  backdrop-filter: blur(8px);
+}
+
+.light .blueprint-panel {
+  border: 1px solid rgba(2, 132, 199, 0.3);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+/* Corner Crosshairs for architectural drawings */
+.blueprint-corner {
+  position: relative;
+}
+.blueprint-corner::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #00f0ff;
+  border-left: 2px solid #00f0ff;
+}
+.blueprint-corner::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid #00f0ff;
+  border-right: 2px solid #00f0ff;
+}
+
+.light .blueprint-corner::before {
+  border-color: #0284c7;
+}
+.light .blueprint-corner::after {
+  border-color: #0284c7;
+}
+
+/* Custom technical scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #081120;
+}
+
+.light ::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0369a1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0284c7;
+}
+
+/* Glowing text and pulse */
+.text-glow-cyan {
+  text-shadow: 0 0 16px rgba(0, 240, 255, 0.6);
+}
+
+.light .text-glow-cyan {
+  text-shadow: 0 0 10px rgba(2, 132, 199, 0.3);
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+
+.animate-scanline {
+  animation: scanline 8s linear infinite;
+}
+
+/* KaTeX Mathematical Rendering Polish */
+.katex {
+  font-size: 1.05em;
+  text-rendering: geometricPrecision;
+}
+
+.katex-display-wrapper {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(56, 189, 248, 0.4) transparent;
+}
+
+.katex-display-wrapper::-webkit-scrollbar {
+  height: 4px;
+}
+
+.katex-display-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.4);
+  border-radius: 2px;
+}
+
+/* Ensure text inputs and textareas always display the native I-beam cursor */
+input[type="text"],
+input[type="number"],
+input[type="search"],
+textarea,
+[contenteditable="true"] {
+  cursor: text !important;
+}
+
+/* Prevent cursor lag or pointer interception */
+.pointer-events-none {
+  pointer-events: none !important;
+}

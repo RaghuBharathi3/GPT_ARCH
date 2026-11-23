@@ -11,7 +11,10 @@ import {
   ExternalLink,
   Zap,
   TrendingUp,
-  Compass
+  Compass,
+  Glasses,
+  Eye,
+  Activity
 } from 'lucide-react';
 import { FUTURE_TRAJECTORY } from '../data/presentationData';
 import { sfx } from '../utils/audio';
@@ -28,11 +31,21 @@ export const FutureTrajectory: React.FC = () => {
 
   const getPillarIcon = (id: string) => {
     switch (id) {
-      case 'multimodality': return <Headphones className="w-5 h-5 text-cyan-400" />;
-      case 'improved-reasoning': return <BrainCircuit className="w-5 h-5 text-indigo-400" />;
-      case 'enhanced-reliability': return <ShieldCheck className="w-5 h-5 text-emerald-400" />;
-      case 'agentic-ai': return <Wrench className="w-5 h-5 text-amber-400" />;
-      default: return <Sparkles className="w-5 h-5" />;
+      case 'multimodality':
+        return (
+          <div className="relative flex items-center justify-center">
+            <Headphones className="w-5 h-5 text-cyan-400 light:text-cyan-700" />
+            <Eye className="w-3 h-3 text-cyan-300 light:text-cyan-600 absolute -top-1.5 -right-1.5" />
+          </div>
+        );
+      case 'improved-reasoning': 
+        return <BrainCircuit className="w-5 h-5 text-indigo-400 light:text-indigo-700" />;
+      case 'enhanced-reliability': 
+        return <ShieldCheck className="w-5 h-5 text-emerald-400 light:text-emerald-700" />;
+      case 'agentic-ai': 
+        return <Wrench className="w-5 h-5 text-amber-400 light:text-amber-700" />;
+      default: 
+        return <Sparkles className="w-5 h-5 text-cyan-400 light:text-cyan-700" />;
     }
   };
 
@@ -147,21 +160,40 @@ export const FutureTrajectory: React.FC = () => {
             {selectedPillar.description}
           </p>
 
+          {selectedPillar.id === 'multimodality' && (
+            <div className="flex items-center gap-3 p-4 rounded-lg bg-cyan-950/60 light:bg-cyan-50 border border-cyan-500/40 text-xs font-mono">
+              <div className="p-2 rounded bg-cyan-500/20 text-cyan-400 light:text-cyan-800 shrink-0 border border-cyan-500/30">
+                <Glasses className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="font-bold text-cyan-300 light:text-cyan-900 block flex items-center gap-2">
+                  <span>HANDS-FREE WEARABLE MULTIMODALITY</span>
+                  <span className="px-1.5 py-0.2 rounded bg-cyan-400 text-slate-950 text-[9px] font-black uppercase">Active Frontier</span>
+                </span>
+                <span className="text-slate-300 light:text-slate-600 text-[11px] mt-0.5 block">
+                  Wearable optical devices enabling real-time sight, speech turn-taking, and hands-free surgical and technical guidance.
+                </span>
+              </div>
+            </div>
+          )}
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 font-mono text-xs">
-            <div className="p-4 rounded-lg bg-slate-900 light:bg-slate-100 border border-cyan-500/20 space-y-1">
-              <span className="text-[10px] text-cyan-400 light:text-cyan-800 uppercase font-bold block">
-                Breakthrough Technologies:
+            <div className="p-4 rounded-lg bg-slate-900 light:bg-slate-100 border border-cyan-500/20 space-y-1.5">
+              <span className="text-[10px] text-cyan-400 light:text-cyan-800 uppercase font-bold flex items-center gap-1.5">
+                <Cpu className="w-3.5 h-3.5" />
+                <span>Breakthrough Technologies:</span>
               </span>
-              <p className="text-slate-200 light:text-slate-800">
+              <p className="text-slate-200 light:text-slate-800 leading-relaxed">
                 {selectedPillar.breakthroughTech}
               </p>
             </div>
 
-            <div className="p-4 rounded-lg bg-slate-900 light:bg-slate-100 border border-cyan-500/20 space-y-1">
-              <span className="text-[10px] text-emerald-400 light:text-emerald-800 uppercase font-bold block">
-                Anticipated Real-World Impact:
+            <div className="p-4 rounded-lg bg-slate-900 light:bg-slate-100 border border-cyan-500/20 space-y-1.5">
+              <span className="text-[10px] text-emerald-400 light:text-emerald-800 uppercase font-bold flex items-center gap-1.5">
+                <TrendingUp className="w-3.5 h-3.5" />
+                <span>Anticipated Real-World Impact:</span>
               </span>
-              <p className="text-slate-200 light:text-slate-800">
+              <p className="text-slate-200 light:text-slate-800 leading-relaxed">
                 {selectedPillar.realWorldImpact}
               </p>
             </div>

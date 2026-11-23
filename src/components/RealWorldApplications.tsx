@@ -61,13 +61,13 @@ export const RealWorldApplications: React.FC = () => {
 
   const getDomainIcon = (id: string) => {
     switch (id) {
-      case 'education': return <GraduationCap className="w-5 h-5 text-cyan-400" />;
-      case 'software-dev': return <Code2 className="w-5 h-5 text-indigo-400" />;
-      case 'healthcare': return <Stethoscope className="w-5 h-5 text-rose-400" />;
-      case 'banking': return <Building2 className="w-5 h-5 text-emerald-400" />;
-      case 'business': return <Briefcase className="w-5 h-5 text-amber-400" />;
-      case 'research': return <FlaskConical className="w-5 h-5 text-teal-400" />;
-      default: return <Sparkles className="w-5 h-5" />;
+      case 'education': return <GraduationCap className="w-5 h-5 text-cyan-400 light:text-cyan-700" />;
+      case 'software-dev': return <Code2 className="w-5 h-5 text-indigo-400 light:text-indigo-700" />;
+      case 'healthcare': return <Stethoscope className="w-5 h-5 text-rose-400 light:text-rose-700" />;
+      case 'banking': return <Building2 className="w-5 h-5 text-emerald-400 light:text-emerald-700" />;
+      case 'business': return <Briefcase className="w-5 h-5 text-amber-400 light:text-amber-700" />;
+      case 'research': return <FlaskConical className="w-5 h-5 text-teal-400 light:text-teal-700" />;
+      default: return <Sparkles className="w-5 h-5 text-cyan-400 light:text-cyan-700" />;
     }
   };
 

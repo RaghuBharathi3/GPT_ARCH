@@ -14,7 +14,10 @@ import {
   RefreshCw,
   Terminal,
   Activity,
-  Zap
+  Zap,
+  Database,
+  Cpu,
+  FileEdit
 } from 'lucide-react';
 import { CORE_DEFINITION, HUB_CAPABILITIES } from '../data/presentationData';
 import { sfx } from '../utils/audio';
@@ -116,8 +119,8 @@ export const HeroBlueprint: React.FC = () => {
 
               {/* Node 1: Generative */}
               <div className="relative z-10 flex flex-col items-center">
-                <div className="w-10 h-10 rounded-full border-2 border-cyan-400 bg-slate-950 light:bg-white flex items-center justify-center text-cyan-300 shadow-[0_0_10px_rgba(0,240,255,0.5)]">
-                  <span className="w-3 h-3 rounded-full bg-cyan-400" />
+                <div className="w-10 h-10 rounded-full border-2 border-cyan-400 bg-slate-950 light:bg-white flex items-center justify-center text-cyan-300 light:text-cyan-700 shadow-[0_0_10px_rgba(0,240,255,0.5)]">
+                  <FileEdit className="w-5 h-5 text-cyan-400 light:text-cyan-700" />
                 </div>
                 <span className="mt-2 text-xs font-mono font-semibold text-slate-200 light:text-slate-800">GENERATIVE</span>
                 <span className="text-[11px] text-cyan-400 light:text-cyan-700">
@@ -127,8 +130,8 @@ export const HeroBlueprint: React.FC = () => {
 
               {/* Node 2: Pre-trained */}
               <div className="relative z-10 flex flex-col items-center">
-                <div className="w-10 h-10 rounded-full border-2 border-cyan-400 bg-slate-950 light:bg-white flex items-center justify-center text-cyan-300 shadow-[0_0_10px_rgba(0,240,255,0.5)]">
-                  <span className="w-3 h-3 rounded-full bg-cyan-400" />
+                <div className="w-10 h-10 rounded-full border-2 border-cyan-400 bg-slate-950 light:bg-white flex items-center justify-center text-cyan-300 light:text-cyan-700 shadow-[0_0_10px_rgba(0,240,255,0.5)]">
+                  <Database className="w-5 h-5 text-cyan-400 light:text-cyan-700" />
                 </div>
                 <span className="mt-2 text-xs font-mono font-semibold text-slate-200 light:text-slate-800">PRE-TRAINED</span>
                 <span className="text-[10px] font-mono text-cyan-400 light:text-cyan-700">Trillions Tokens</span>
@@ -136,8 +139,8 @@ export const HeroBlueprint: React.FC = () => {
 
               {/* Node 3: Transformer */}
               <div className="relative z-10 flex flex-col items-center">
-                <div className="w-10 h-10 rounded-full border-2 border-cyan-400 bg-slate-950 light:bg-white flex items-center justify-center text-cyan-300 shadow-[0_0_10px_rgba(0,240,255,0.5)]">
-                  <span className="w-3 h-3 rounded-full bg-cyan-400" />
+                <div className="w-10 h-10 rounded-full border-2 border-cyan-400 bg-slate-950 light:bg-white flex items-center justify-center text-cyan-300 light:text-cyan-700 shadow-[0_0_10px_rgba(0,240,255,0.5)]">
+                  <Cpu className="w-5 h-5 text-cyan-400 light:text-cyan-700" />
                 </div>
                 <span className="mt-2 text-xs font-mono font-semibold text-slate-200 light:text-slate-800">TRANSFORMER</span>
                 <span className="text-[10px] font-mono text-cyan-400 light:text-cyan-700">Self-Attention</span>
@@ -209,7 +212,7 @@ export const HeroBlueprint: React.FC = () => {
                       }`}
                     >
                       <div className="flex items-center justify-between mb-2">
-                        <div className={`p-1.5 rounded ${isSelected ? 'text-cyan-300 light:text-cyan-800' : 'text-slate-400 light:text-slate-500'}`}>
+                        <div className={`p-1.5 rounded ${isSelected ? 'text-cyan-300 light:text-cyan-900 bg-cyan-950/60 light:bg-cyan-200' : 'text-cyan-400 light:text-cyan-700 bg-slate-900/60 light:bg-slate-100'}`}>
                           {getIcon(cap.iconName)}
                         </div>
                         {isSelected && (

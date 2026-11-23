@@ -10,7 +10,9 @@ import {
   Layers,
   ChevronRight,
   TrendingUp,
-  Cpu
+  Cpu,
+  Terminal,
+  Scissors
 } from 'lucide-react';
 import { WORKFLOW_STEPS } from '../data/presentationData';
 import { sfx } from '../utils/audio';
@@ -143,6 +145,19 @@ export const WorkflowSimulator: React.FC = () => {
     return () => clearInterval(timer);
   }, [isAutoGenerating, sequenceTokens, temperature]);
 
+  const getWorkflowStepIcon = (step: number) => {
+    switch (step) {
+      case 1: return <Terminal className="w-3.5 h-3.5 text-cyan-400 light:text-cyan-700" />;
+      case 2: return <Scissors className="w-3.5 h-3.5 text-amber-400 light:text-amber-700" />;
+      case 3: return <Layers className="w-3.5 h-3.5 text-indigo-400 light:text-indigo-700" />;
+      case 4: return <Cpu className="w-3.5 h-3.5 text-cyan-400 light:text-cyan-700" />;
+      case 5: return <Sparkles className="w-3.5 h-3.5 text-sky-400 light:text-sky-700" />;
+      case 6: return <RotateCcw className="w-3.5 h-3.5 text-emerald-400 light:text-emerald-700" />;
+      case 7: return <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 light:text-emerald-700" />;
+      default: return <Sparkles className="w-3.5 h-3.5" />;
+    }
+  };
+
   return (
     <section id="workflow" className="py-20 border-b border-cyan-500/20 light:border-slate-300 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -218,10 +233,13 @@ export const WorkflowSimulator: React.FC = () => {
                       : 'border-cyan-500/20 bg-slate-950/60 light:bg-white light:border-slate-300 text-slate-400 light:text-slate-600 hover:border-cyan-500/40'
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-[10px] font-mono font-bold text-cyan-400 light:text-cyan-800">
-                      STEP 0{step.step}
-                    </span>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <div className="flex items-center gap-1.5">
+                      {getWorkflowStepIcon(step.step)}
+                      <span className="text-[10px] font-mono font-bold text-cyan-400 light:text-cyan-800">
+                        0{step.step}
+                      </span>
+                    </div>
                     {isActive && <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />}
                   </div>
                   <div className="font-display font-bold text-xs sm:text-sm text-slate-100 light:text-slate-900 leading-tight">

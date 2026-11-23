@@ -31,11 +31,11 @@ export const TrainingPipeline: React.FC = () => {
 
   const getStageIcon = (id: string) => {
     switch (id) {
-      case 'pre-training': return <Database className="w-5 h-5 text-cyan-400" />;
-      case 'sft': return <GraduationCap className="w-5 h-5 text-indigo-400" />;
-      case 'preference-opt': return <ThumbsUp className="w-5 h-5 text-teal-400" />;
-      case 'evaluation': return <ShieldAlert className="w-5 h-5 text-amber-400" />;
-      default: return <Sparkles className="w-5 h-5" />;
+      case 'pre-training': return <Database className="w-5 h-5 text-cyan-400 light:text-cyan-700" />;
+      case 'sft': return <GraduationCap className="w-5 h-5 text-indigo-400 light:text-indigo-700" />;
+      case 'preference-opt': return <ThumbsUp className="w-5 h-5 text-emerald-400 light:text-emerald-700" />;
+      case 'evaluation': return <ShieldAlert className="w-5 h-5 text-amber-400 light:text-amber-700" />;
+      default: return <Sparkles className="w-5 h-5 text-cyan-400 light:text-cyan-700" />;
     }
   };
 
@@ -234,36 +234,39 @@ export const TrainingPipeline: React.FC = () => {
           <div className="grid grid-cols-3 gap-2 mb-4 font-mono text-xs">
             <button
               onClick={() => { sfx.playClick(800); setActiveModelTab('base'); }}
-              className={`p-3 rounded-lg border text-center transition-all ${
+              className={`p-3 rounded-lg border text-center transition-all flex flex-col items-center justify-center ${
                 activeModelTab === 'base'
                   ? 'border-rose-400 bg-rose-950/40 text-rose-200 light:bg-rose-50 light:text-rose-900 font-bold'
                   : 'border-slate-800 light:border-slate-300 text-slate-400 light:text-slate-600 hover:bg-slate-900'
               }`}
             >
+              <Database className="w-4 h-4 mb-1 text-rose-400 light:text-rose-700" />
               <div>Stage 1: Pre-trained Base</div>
               <div className="text-[10px] text-slate-500 mt-0.5">Unaligned Web Continuer</div>
             </button>
 
             <button
               onClick={() => { sfx.playClick(900); setActiveModelTab('sft'); }}
-              className={`p-3 rounded-lg border text-center transition-all ${
+              className={`p-3 rounded-lg border text-center transition-all flex flex-col items-center justify-center ${
                 activeModelTab === 'sft'
                   ? 'border-indigo-400 bg-indigo-950/40 text-indigo-200 light:bg-indigo-50 light:text-indigo-900 font-bold'
                   : 'border-slate-800 light:border-slate-300 text-slate-400 light:text-slate-600 hover:bg-slate-900'
               }`}
             >
+              <GraduationCap className="w-4 h-4 mb-1 text-indigo-400 light:text-indigo-700" />
               <div>Stage 2: SFT Model</div>
               <div className="text-[10px] text-slate-500 mt-0.5">Instruction Following</div>
             </button>
 
             <button
               onClick={() => { sfx.playClick(1050); setActiveModelTab('rlhf'); }}
-              className={`p-3 rounded-lg border text-center transition-all ${
+              className={`p-3 rounded-lg border text-center transition-all flex flex-col items-center justify-center ${
                 activeModelTab === 'rlhf'
                   ? 'border-emerald-400 bg-emerald-950/40 text-emerald-200 light:bg-emerald-50 light:text-emerald-900 font-bold'
                   : 'border-slate-800 light:border-slate-300 text-slate-400 light:text-slate-600 hover:bg-slate-900'
               }`}
             >
+              <ThumbsUp className="w-4 h-4 mb-1 text-emerald-400 light:text-emerald-700" />
               <div>Stage 3: RLHF Aligned</div>
               <div className="text-[10px] text-slate-500 mt-0.5">Helpful, Harmless, Honest</div>
             </button>

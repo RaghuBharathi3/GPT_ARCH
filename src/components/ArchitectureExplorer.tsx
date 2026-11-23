@@ -10,7 +10,8 @@ import {
   Compass, 
   Play, 
   Pause,
-  Grid
+  Grid,
+  Terminal
 } from 'lucide-react';
 import { ARCHITECTURE_LAYERS } from '../data/presentationData';
 import { sfx } from '../utils/audio';
@@ -26,6 +27,17 @@ export const ArchitectureExplorer: React.FC = () => {
   const handleSelectLayer = (id: string) => {
     sfx.playClick(950);
     setSelectedLayerId(id);
+  };
+
+  const getLayerIcon = (id: string) => {
+    switch (id) {
+      case 'input-tokens': return <Terminal className="w-4 h-4 text-cyan-400 light:text-cyan-700" />;
+      case 'embeddings': return <Layers className="w-4 h-4 text-indigo-400 light:text-indigo-700" />;
+      case 'masked-attention': return <Eye className="w-4 h-4 text-cyan-300 light:text-cyan-700" />;
+      case 'ffn': return <Cpu className="w-4 h-4 text-teal-400 light:text-teal-700" />;
+      case 'output-layer': return <Sparkles className="w-4 h-4 text-amber-400 light:text-amber-700" />;
+      default: return <Layers className="w-4 h-4" />;
+    }
   };
 
   const handleToggleSimulation = () => {
@@ -153,8 +165,11 @@ export const ArchitectureExplorer: React.FC = () => {
                           </span>
                         </div>
 
-                        <div className="font-display font-bold text-base sm:text-lg text-slate-100 light:text-slate-900">
-                          {layer.name}
+                        <div className="font-display font-bold text-base sm:text-lg text-slate-100 light:text-slate-900 flex items-center gap-2">
+                          <div className="p-1 rounded bg-slate-900/60 light:bg-slate-100 border border-cyan-500/20">
+                            {getLayerIcon(layer.id)}
+                          </div>
+                          <span>{layer.name}</span>
                         </div>
                         <div className="text-xs text-slate-300 light:text-slate-600 mt-0.5 line-clamp-1">
                           {layer.shortDesc}

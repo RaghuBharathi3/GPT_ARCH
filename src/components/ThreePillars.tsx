@@ -8,7 +8,9 @@ import {
   Sparkles, 
   Layers, 
   Zap,
-  Info
+  Info,
+  Network,
+  FileEdit
 } from 'lucide-react';
 import { THREE_PILLARS } from '../data/presentationData';
 import { sfx } from '../utils/audio';
@@ -26,34 +28,27 @@ export const ThreePillars: React.FC = () => {
     switch (id) {
       case 'generative':
         return (
-          <svg className="w-12 h-12 stroke-cyan-400 fill-none" viewBox="0 0 24 24" strokeWidth="1.5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-            <path strokeLinecap="round" strokeLinejoin="round" d="m14 14 3 6 2-3 3-1-8-2z" className="fill-cyan-400 stroke-cyan-400" />
-          </svg>
+          <div className="relative flex items-center justify-center w-16 h-16 rounded-xl bg-cyan-950/40 light:bg-cyan-100 border border-cyan-500/30 text-cyan-400 light:text-cyan-700 shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+            <FileEdit className="w-8 h-8" />
+            <Sparkles className="w-4 h-4 text-cyan-300 light:text-cyan-600 absolute -top-1 -right-1 animate-pulse" />
+          </div>
         );
       case 'pre-trained':
         return (
-          <svg className="w-12 h-12 stroke-cyan-400 fill-none" viewBox="0 0 24 24" strokeWidth="1.5">
-            <ellipse cx="12" cy="5" rx="8" ry="3" />
-            <path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5" />
-            <path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3" />
-            <line x1="8" y1="5" x2="8" y2="19" strokeDasharray="2 2" />
-            <line x1="16" y1="5" x2="16" y2="19" strokeDasharray="2 2" />
-          </svg>
+          <div className="relative flex items-center justify-center w-16 h-16 rounded-xl bg-cyan-950/40 light:bg-cyan-100 border border-cyan-500/30 text-cyan-400 light:text-cyan-700 shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+            <Database className="w-8 h-8" />
+            <Layers className="w-4 h-4 text-cyan-300 light:text-cyan-600 absolute -bottom-1 -right-1" />
+          </div>
         );
       case 'transformer':
         return (
-          <svg className="w-12 h-12 stroke-cyan-400 fill-none" viewBox="0 0 24 24" strokeWidth="1.5">
-            <circle cx="12" cy="12" r="4" fill="rgba(6, 182, 212, 0.2)" />
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v6m0 8v6M2 12h6m8 0h6m-3-7-4 3m-6 4-4 3m0-10 4 3m6 4 4 3" />
-            <circle cx="12" cy="2" r="1.5" fill="#00f0ff" />
-            <circle cx="22" cy="12" r="1.5" fill="#00f0ff" />
-            <circle cx="12" cy="22" r="1.5" fill="#00f0ff" />
-            <circle cx="2" cy="12" r="1.5" fill="#00f0ff" />
-          </svg>
+          <div className="relative flex items-center justify-center w-16 h-16 rounded-xl bg-cyan-950/40 light:bg-cyan-100 border border-cyan-500/30 text-cyan-400 light:text-cyan-700 shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+            <Cpu className="w-8 h-8" />
+            <Network className="w-4 h-4 text-cyan-300 light:text-cyan-600 absolute -top-1 -right-1 animate-pulse" />
+          </div>
         );
       default:
-        return <Cpu className="w-12 h-12 text-cyan-400" />;
+        return <Cpu className="w-12 h-12 text-cyan-400 light:text-cyan-700" />;
     }
   };
 

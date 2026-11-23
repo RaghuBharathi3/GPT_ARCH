@@ -167,6 +167,14 @@ textarea,
   cursor: text !important;
 }
 
+/* Ensure interactive and clickable elements display the standard pointer hand */
+button,
+a,
+[role="button"],
+.cursor-pointer {
+  cursor: pointer;
+}
+
 /* Prevent cursor lag or pointer interception */
 .pointer-events-none {
   pointer-events: none !important;

@@ -16,7 +16,10 @@ import {
   DollarSign,
   Binary,
   RotateCw,
-  BookOpen
+  BookOpen,
+  BrainCircuit,
+  LogIn,
+  Shuffle
 } from 'lucide-react';
 import { TECHNICAL_COMPONENTS } from '../data/presentationData';
 import { sfx } from '../utils/audio';
@@ -103,15 +106,15 @@ export const TechnicalComponents: React.FC = () => {
 
   const getSymbolIcon = (id: string) => {
     switch (id) {
-      case 'token': return <Square className="w-5 h-5 text-cyan-400" />;
-      case 'embedding': return <Circle className="w-5 h-5 text-indigo-400" />;
-      case 'parameter': return <Triangle className="w-5 h-5 text-sky-400" />;
-      case 'context-window': return <Settings className="w-5 h-5 text-teal-400" />;
-      case 'attention': return <Eye className="w-5 h-5 text-cyan-300" />;
-      case 'inference': return <ArrowRightCircle className="w-5 h-5 text-blue-400" />;
-      case 'fine-tuning': return <Target className="w-5 h-5 text-emerald-400" />;
-      case 'tokenization': return <Scissors className="w-5 h-5 text-amber-400" />;
-      default: return <Info className="w-5 h-5" />;
+      case 'token': return <Square className="w-5 h-5 text-cyan-400 light:text-cyan-700" />;
+      case 'embedding': return <Circle className="w-5 h-5 text-indigo-400 light:text-indigo-700" />;
+      case 'parameter': return <Triangle className="w-5 h-5 text-sky-400 light:text-sky-700" />;
+      case 'context-window': return <Settings className="w-5 h-5 text-teal-400 light:text-teal-700" />;
+      case 'attention': return <BrainCircuit className="w-5 h-5 text-cyan-400 light:text-cyan-700" />;
+      case 'inference': return <LogIn className="w-5 h-5 text-blue-400 light:text-blue-700" />;
+      case 'fine-tuning': return <Target className="w-5 h-5 text-emerald-400 light:text-emerald-700" />;
+      case 'tokenization': return <Shuffle className="w-5 h-5 text-amber-400 light:text-amber-700" />;
+      default: return <Info className="w-5 h-5 text-slate-400 light:text-slate-700" />;
     }
   };
 

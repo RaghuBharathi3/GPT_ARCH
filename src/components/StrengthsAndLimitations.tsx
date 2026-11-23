@@ -6,8 +6,10 @@ import {
   Sparkles, 
   Lock, 
   Minimize, 
+  Minimize2,
   Calendar, 
   BatteryCharging, 
+  Cpu,
   Zap, 
   Globe, 
   MessageSquare, 
@@ -32,24 +34,24 @@ export const StrengthsAndLimitations: React.FC = () => {
 
   const getStrengthIcon = (id: string) => {
     switch (id) {
-      case 'natural-lang': return <MessageSquare className="w-5 h-5 text-cyan-400" />;
-      case 'productivity': return <Zap className="w-5 h-5 text-amber-400" />;
-      case 'multilingual': return <Globe className="w-5 h-5 text-teal-400" />;
-      case 'content-gen': return <Flame className="w-5 h-5 text-rose-400" />;
-      case 'analytical-reasoning': return <Scale className="w-5 h-5 text-indigo-400" />;
-      case 'adaptability': return <Layers className="w-5 h-5 text-sky-400" />;
-      default: return <Sparkles className="w-5 h-5" />;
+      case 'natural-lang': return <MessageSquare className="w-5 h-5 text-cyan-400 light:text-cyan-700" />;
+      case 'productivity': return <Zap className="w-5 h-5 text-amber-400 light:text-amber-700" />;
+      case 'multilingual': return <Globe className="w-5 h-5 text-teal-400 light:text-teal-700" />;
+      case 'content-gen': return <Flame className="w-5 h-5 text-rose-400 light:text-rose-700" />;
+      case 'analytical-reasoning': return <Scale className="w-5 h-5 text-indigo-400 light:text-indigo-700" />;
+      case 'adaptability': return <Layers className="w-5 h-5 text-sky-400 light:text-sky-700" />;
+      default: return <Sparkles className="w-5 h-5 text-cyan-400 light:text-cyan-700" />;
     }
   };
 
   const getLimitIcon = (id: string) => {
     switch (id) {
-      case 'bias': return <AlertTriangle className="w-5 h-5 text-amber-400" />;
-      case 'privacy': return <Lock className="w-5 h-5 text-rose-400" />;
-      case 'context-limits': return <Minimize className="w-5 h-5 text-sky-400" />;
-      case 'knowledge-cutoff': return <Calendar className="w-5 h-5 text-indigo-400" />;
-      case 'compute-cost': return <BatteryCharging className="w-5 h-5 text-teal-400" />;
-      default: return <ShieldAlert className="w-5 h-5 text-rose-400" />;
+      case 'bias': return <AlertTriangle className="w-5 h-5 text-amber-400 light:text-amber-700" />;
+      case 'privacy': return <Lock className="w-5 h-5 text-rose-400 light:text-rose-700" />;
+      case 'context-limits': return <Minimize2 className="w-5 h-5 text-sky-400 light:text-sky-700" />;
+      case 'knowledge-cutoff': return <Calendar className="w-5 h-5 text-indigo-400 light:text-indigo-700" />;
+      case 'compute-cost': return <Cpu className="w-5 h-5 text-teal-400 light:text-teal-700" />;
+      default: return <ShieldAlert className="w-5 h-5 text-rose-400 light:text-rose-700" />;
     }
   };
 
